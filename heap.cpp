@@ -74,7 +74,7 @@ int main() {
       if (k >= 50) {
 	break;
       }
-      else if (k >= heap[2*k] && k >= heap[2*k+1]) {
+      else if (heap[k] >= heap[2*k] && heap[k] >= heap[2*k+1]) {
 	break;
       }
       else if (heap[2*k] >= heap[2*k+1]) {
