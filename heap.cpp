@@ -7,6 +7,7 @@
 using namespace std;
 
 int halffloor(int x);
+int min(int x, int y);
 
 int main() {
   int len = 0;
@@ -61,6 +62,22 @@ int main() {
     cout << heap[i] << endl;
     } */
 
+
+  // visually display tree
+
+  for (int i=0; i<7; i++) {
+    for (int x=0; x<pow(2,(6-i)); x++) {
+      cout << " ";
+    }
+    for (int j=pow(2,i); j<min(len+1, pow(2,i+1)); j++) {
+      if (heap[j] != INT_MIN) {cout << heap[j];}
+      for (int x=0; x<pow(2,7-i); x++) {
+	cout << " ";
+      }
+    }
+    cout << "\n";
+  }
+
   // print in decreasing order and remove
 
   for (int i=len; i>0; i--) {
@@ -100,5 +117,15 @@ int halffloor(int x) {
   }
   else {
     return (x-1)/2;
+  }
+}
+
+
+int min(int x, int y) {
+  if (x>y) {
+    return y;
+  }
+  else {
+    return x;
   }
 }
