@@ -1,3 +1,7 @@
+/* Author: Suyash Pandit
+Date: April 4, 2022
+This models the heap data structure, using a max heap */
+
 #include <iostream>
 #include <math.h>
 #include <cstring>
@@ -21,12 +25,14 @@ int main() {
 
 
   if (strcmp(input, "CONSOLE") == 0 || strcmp(input, "console") == 0) {
+    // read in from console
     cout << "How many numbers will you input? "; cin >> len;
     heap[0] = INT_MAX;
     cout << "Enter your numbers one at a time below:" << endl;
     for (int i=1; i < len+1; i++) {
       cin >> heap[i];
       int k = i;
+      // sort in descending order
       while (heap[halffloor(k)] < heap[k]) {
         int temp = heap[k];
         heap[k] = heap[halffloor(k)];
@@ -37,6 +43,7 @@ int main() {
   }
 
   else if (strcmp(input, "FILE") == 0 || strcmp(input, "file") == 0) {
+    // read in from file
     // cout << "Step 1!" << endl;
     ifstream myfile ("Numbers.txt");
     heap[0] = INT_MAX;
@@ -46,6 +53,7 @@ int main() {
       myfile >> heap[i];
       // cout << heap[i] << endl;
       int k = i;
+      // sort in descending order
       while (heap[halffloor(k)] < heap[k]) {
 	int temp = heap[k];
 	heap[k] = heap[halffloor(k)];
@@ -88,7 +96,7 @@ int main() {
     int k = 1;
 
     while (true) { // does not exit until we specifically call for break
-      if (k >= 50) {
+      if (k >= 50) { // only 100 elements max
 	break;
       }
       else if (heap[k] >= heap[2*k] && heap[k] >= heap[2*k+1]) {
